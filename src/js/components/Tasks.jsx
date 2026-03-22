@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const Tasks = () => {
     
-    const [tasks, setTasks] = useState(["Task 1", "Task 2"]);
+    const [tasks, setTasks] = useState([]);
     const [userInput, setUserInput] = useState("");
     
     
@@ -36,6 +36,7 @@ export const Tasks = () => {
                                     const newTasks = [...tasks,userInput];
                                     //console.log(newTasks);
                                     setTasks(newTasks);
+                                    setUserInput("");
 
                                 }} 
                                 >
@@ -46,7 +47,9 @@ export const Tasks = () => {
                             <ul className="tasks">
                                 {tasks.map((task, index)=>{
                                     //console.log(tasks);
-                                    return <li key={index}>{task}</li>;
+                                    return (
+                                        <li key={index}>{task}</li>
+                                    );
                                 })}
                             </ul>
 
