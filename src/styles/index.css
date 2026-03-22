@@ -9,3 +9,24 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+body{
+    background:#f8f8f8;
+}
+.tasks-container{
+    background:#ffffff;
+    box-shadow: 0 0 6px 3px gray;
+}
+.tasks ul{
+    padding-inline-start: 0px!important;
+}
+.tasks li{
+    color:gray;
+    list-style: none;
+    padding:10px;
+    border-bottom:1px solid gray;
+}
+.task-count{
+    margin:5px;
+    padding:5px;
+}
