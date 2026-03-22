@@ -30,3 +30,7 @@ body{
     margin:5px;
     padding:5px;
 }
+.task-input input{
+    width:80%;
+    padding:10px;
+}

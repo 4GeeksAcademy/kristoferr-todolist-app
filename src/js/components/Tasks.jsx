@@ -1,4 +1,11 @@
+import { useState } from "react";
+
 export const Tasks = () => {
+    
+    const [tasks, setTasks] = useState(["Task 1", "Task 2"]);
+    const [userInput, setUserInput] = useState("");
+    
+    
     
     return(
 
@@ -15,15 +22,36 @@ export const Tasks = () => {
                 <div className="col-3"></div>
                 <div className="col-6">
                     <div className="tasks-container">
+                            <div className="task-input">
+                                <input 
+                                    type="text" 
+                                    placeholder="What needs to be done today?"
+                                    //onChange={(event)=>{setInputValue(event.target.value)}}
+                                    onChange={(event) => setUserInput(event.target.value)}
+                                    value={userInput}
+                                />
+                                <button 
+                                className="btn btn-primary"
+                                onClick={(event) => {
+                                    const newTasks = [...tasks,userInput];
+                                    //console.log(newTasks);
+                                    setTasks(newTasks);
+
+                                }} 
+                                >
+                                    Add Task
+                                </button>
+                            </div>
+                            
                             <ul className="tasks">
-                                <li>Task 1</li>
-                                <li>Task 2</li>
-                                <li>Task 3</li>
-                                <li>Task 4</li>
+                                {tasks.map((task, index)=>{
+                                    //console.log(tasks);
+                                    return <li key={index}>{task}</li>;
+                                })}
                             </ul>
 
                             <div className="task-count">
-                                <h6>4 Items Left</h6>
+                                <h6>{tasks.length} Items Left</h6>
                             </div>
                     </div>
                 </div>
