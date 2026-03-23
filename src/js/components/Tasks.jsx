@@ -48,7 +48,19 @@ export const Tasks = () => {
                                 {tasks.map((task, index)=>{
                                     //console.log(tasks);
                                     return (
-                                        <li key={index}>{task}</li>
+                                        <li 
+                                            onMouseOver={(event)=>{
+                                                console.log("i hovered mouse", task, index);
+                                                return <h1>test</h1>;
+                                            }}
+                                            onClick={(event)=>{
+                                                console.log("you clicked", task, index);
+                                                //tasks.pop.task;
+                                                tasks.splice(index,1);
+
+                                            }}
+                                            key={index}>{task}
+                                        </li>
                                     );
                                 })}
                             </ul>

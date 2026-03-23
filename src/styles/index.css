@@ -26,6 +26,9 @@ body{
     padding:10px;
     border-bottom:1px solid gray;
 }
+.tasks li:hover{
+    color:red;
+}
 .task-count{
     margin:5px;
     padding:5px;
