@@ -75,7 +75,9 @@ export const Tasks = () => {
                                             onClick={(event)=>{
                                                 console.log("you clicked", task, index);
                                                 //tasks.pop.task;
-                                                tasks.splice(index,1);
+                                                const newTasks = [...tasks];
+                                                newTasks.splice(index,1);
+                                                setTasks(newTasks);
 
                                             }}
                                             key={index}>{task}
