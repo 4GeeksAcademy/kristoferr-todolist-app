@@ -28,6 +28,8 @@ body{
 }
 .tasks li:hover{
     color:red;
+    list-style-type: "x";
+    cursor: pointer;
 }
 .task-count{
     margin:5px;

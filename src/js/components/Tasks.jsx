@@ -5,7 +5,26 @@ export const Tasks = () => {
     const [tasks, setTasks] = useState([]);
     const [userInput, setUserInput] = useState("");
     
-    
+    function updateTasks(task,index){
+        {tasks.map((task, index)=>{
+            //console.log(tasks);
+            return (
+                <li 
+                    onMouseOver={(event)=>{
+                        console.log("i hovered mouse", task, index);
+                        //return <h1>test</h1>;
+                    }}
+                    onClick={(event)=>{
+                        console.log("you clicked", task, index);
+                        //tasks.pop.task;
+                        tasks.splice(index,1);
+
+                    }}
+                    key={index}>{task}
+                </li>
+            );
+        })}
+    }
     
     return(
 
@@ -51,7 +70,7 @@ export const Tasks = () => {
                                         <li 
                                             onMouseOver={(event)=>{
                                                 console.log("i hovered mouse", task, index);
-                                                return <h1>test</h1>;
+                                                //return <h1>test</h1>;
                                             }}
                                             onClick={(event)=>{
                                                 console.log("you clicked", task, index);
