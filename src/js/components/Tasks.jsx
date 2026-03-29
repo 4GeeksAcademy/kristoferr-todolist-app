@@ -101,6 +101,62 @@ export const Tasks = () => {
         
 
     }
+
+    function deleteTask(task){
+        console.log("deleting task", task);
+        //console.log("https://playground.4geeks.com/todo/todos/" + task);
+
+        //fetch all tasks from backend
+        fetch("https://playground.4geeks.com/todo/users/kristofer", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response =>{
+            console.log("got response", response);
+            return response.json();
+        }).then(data => {
+            console.log(data);
+            console.log(data.todos[0].id);
+            console.log(data.todos[0].label);
+            //const taskName = data.todos[0].label; //task code with yuanfer
+            //const taskID = data.todos[0].id; //task 243
+            let taskID = 0;
+            let taskName = task;
+
+            //get task ID
+            for(let key in data.todos){
+                console.log(data.todos[key].label);
+                
+                if(data.todos[key].label === task){
+                    taskName = task;
+                    taskID = data.todos[key].id;
+                    console.log(taskID);
+                }
+            }
+
+            //delete taskID from database
+            //console.log(`https://playground.4geeks.com/todo/todos/${taskID}`);
+            fetch(`https://playground.4geeks.com/todo/todos/${taskID}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(response =>{
+                console.log(response);
+            }).catch(error => console.log(error));
+    
+
+        });
+
+        // find task in backend with same name
+        // find task id
+        // delete it from backend
+        // DELETE https://playground.4geeks.com/todo/todos/243
+
+       
+
+    }
     
     useEffect(()=>{
         //console.log("loading for first time");
@@ -194,15 +250,16 @@ export const Tasks = () => {
                                     return (
                                         <li 
                                             onMouseOver={(event)=>{
-                                                console.log("i hovered mouse", task, index);
+                                                //console.log("i hovered mouse", task, index);
                                                 //return <h1>test</h1>;
                                             }}
                                             onClick={(event)=>{
-                                                console.log("you clicked", task, index);
-                                                //tasks.pop.task;
-                                                const newTasks = [...tasks];
-                                                newTasks.splice(index,1);
-                                                setTasks(newTasks);
+                                                // console.log("you clicked", task, index);
+                                                // //tasks.pop.task;
+                                                // const newTasks = [...tasks];
+                                                // newTasks.splice(index,1);
+                                                // setTasks(newTasks);
+                                                deleteTask(task);
 
                                             }}
                                             key={index}>{task}
