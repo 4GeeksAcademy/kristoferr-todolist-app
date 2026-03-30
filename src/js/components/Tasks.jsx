@@ -76,6 +76,7 @@ export const Tasks = () => {
         // }
 
         setTasks(todoArray);
+        setUserInput("");
        });
 
         // fetch('https://playground.4geeks.com/todo/users/kristofer', {
@@ -144,6 +145,8 @@ export const Tasks = () => {
                 }
             }).then(response =>{
                 console.log(response);
+            }).then(data => {
+                getTasksfromAPI();
             }).catch(error => console.log(error));
     
 
@@ -212,7 +215,7 @@ export const Tasks = () => {
             <div className="row">
                 <div className="col-3"></div>
                 <div className="col-6 d-flex justify-content-center">
-                        <h1 className="header">todos</h1>
+                        <h1 className="header m-5">Kristofer's ToDo List</h1>
                 </div>
                 <div className="col-3"></div>
             </div>
@@ -227,6 +230,12 @@ export const Tasks = () => {
                                     placeholder="What needs to be done today?"
                                     //onChange={(event)=>{setInputValue(event.target.value)}}
                                     onChange={(event) => setUserInput(event.target.value)}
+                                    onKeyDown={(event) => {
+                                        if(event.key==="Enter"){
+                                            //console.log("i pressed enter");
+                                            addTask(userInput);
+                                        }
+                                    }}
                                     value={userInput}
                                 />
                                 <button 

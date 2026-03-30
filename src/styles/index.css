@@ -1,41 +1,119 @@
-/* 
-
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
-
-body{
-    background:#f8f8f8;
+/* Global reset + better font */
+body {
+    background: linear-gradient(135deg, #eef2f7, #f8f9fb);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background-image: url("/src/img/krbaby.jpg");
+    background-size: cover;        /* Makes it fill the entire screen */
+    background-position: center;   /* Keeps it centered */
+    background-repeat: no-repeat;  /* Prevents tiling */
+    background-attachment: fixed;  /* Optional: gives a subtle parallax effect */
+    margin: 0;
 }
-.tasks-container{
-    background:#ffffff;
-    box-shadow: 0 0 6px 3px gray;
+
+/* Main container */
+.tasks-container {
+    max-width: 600px;
+    margin: 0px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 20px;
 }
-.tasks ul{
-    padding-inline-start: 0px!important;
+
+/* Title */
+h1 {
+    text-align: center;
+    font-size: 48px;
+    color: #2d2d2d;
+    margin-bottom: 20px;
 }
-.tasks li{
-    color:gray;
+
+/* Input + button wrapper */
+.task-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Input field */
+.task-input input {
+    flex: 1;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.task-input input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Add button */
+.task-input button {
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.task-input button:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+
+/* Task list */
+.tasks ul {
+    padding: 0;
+    margin: 0;
+}
+
+/* Task item */
+.tasks li {
     list-style: none;
-    padding:10px;
-    border-bottom:1px solid gray;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background: #f9fafb;
+    color: #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
 }
-.tasks li:hover{
-    color:red;
-    list-style-type: "x";
+
+/* Hover effect */
+.tasks li:hover {
+    background: #eef4ff;
+    transform: translateX(4px);
+    color: #1d4ed8;
     cursor: pointer;
 }
-.task-count{
-    margin:5px;
-    padding:5px;
+
+/* Optional delete "X" on hover */
+.tasks li::after {
+    content: "✕";
+    opacity: 0;
+    color: #ef4444;
+    font-weight: bold;
+    transition: opacity 0.2s ease;
 }
-.task-input input{
-    width:80%;
-    padding:10px;
+
+.tasks li:hover::after {
+    opacity: 1;
+}
+
+/* Task counter */
+.task-count {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+    text-align: left;
 }
